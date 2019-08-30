@@ -1,0 +1,64 @@
+---
+name: mhweb
+hostname: mhweb.local
+# VM configurations
+#ubuntu: "14.04"
+
+# Networks to configure
+networks:
+   - type: private
+     ip: "192.168.33.11"
+
+# Additional ports to forward
+#ports:
+#    - guest: 443
+#      host: 44300
+
+# Shared folders to configure
+folders:
+   - map: ../mhweb
+     to: /var/www/html
+
+# Web server to run
+webserver: apache
+
+# PHP version to use for CLI
+#php-cli: "5.6"
+
+# MySQL version to use
+mysql: "5.5"
+
+# Additional Ubuntu packages to install
+apt-packages:
+   - php7.0-gd
+   - php7.1-mbstring
+  #  - php7.2-xml
+#    - php5.6-gd
+
+# Websites to create
+sites:
+  - url: "site.test"
+    root: /vagrant
+    php: "7.0"
+#    - url: site70.test
+#      root: /vagrant
+#      php: "7.0"
+#    - url: site71.test
+#      root: /vagrant
+    #  php: "7.1"
+#    - url: site56.test
+#      root: /vagrant
+#      php: "5.6"
+
+# Databases to create
+databases:
+   - name: devbox
+     user: devbox
+     password: secret
+#    - name: devbox_testing
+#      user: tester
+#      password: secret
+
+# Global Composer packages to install
+#composer-packages:
+#    - laravel/envoy
