@@ -1,8 +1,11 @@
 ---
 name: mhweb
-hostname: mhweb.local
+memory: 512 
+cpus: 1
+gui: false
+# hostname: mhweb.dev
 # VM configurations
-#ubuntu: "14.04"
+ubuntu: "16.04"
 
 # Networks to configure
 networks:
@@ -17,29 +20,33 @@ networks:
 # Shared folders to configure
 folders:
    - map: ../mhweb
-     to: /var/www/html
+     to: /var/www/html/mhweb
 
 # Web server to run
-webserver: apache
+webserver: nginx
 
 # PHP version to use for CLI
-#php-cli: "5.6"
+php-cli: "7.1"
 
 # MySQL version to use
-mysql: "5.5"
+# mysql: "5.7"
 
 # Additional Ubuntu packages to install
-apt-packages:
-   - php7.0-gd
-   - php7.1-mbstring
+# apt-packages:
+  # - php7.1 php7.1-cli php7.1-fpm php7.1-common php7.1-gd php7.1-mcrypt php7.1-mbstring php7.1-xml php7.1-mysql php7.1-pgsql php7.1-sqlite3 php7.1-zip php7.1-soap  php7.1-xmlrpc
+    #  - php7.0 php7.0-cli php7.0-fpm php7.0-common php7.0-gd php7.0-mcrypt php7.0-mbstring php7.0-xml php7.0-mysql php7.0-pgsql php7.0-sqlite3 php7.0-zip php7.0-soap  php7.0-xmlrpc
+
+  #  - php7.2-gd 
+  #  - php7.2-dom 
+  #  - php7.2-mbstring
   #  - php7.2-xml
 #    - php5.6-gd
 
 # Websites to create
 sites:
-  - url: "site.test"
-    root: /vagrant
-    php: "7.0"
+  - url: "mhweb.com"
+    root: /var/www/html/mhweb
+    php: "7.1"
 #    - url: site70.test
 #      root: /vagrant
 #      php: "7.0"
@@ -51,10 +58,10 @@ sites:
 #      php: "5.6"
 
 # Databases to create
-databases:
-   - name: devbox
-     user: devbox
-     password: secret
+# databases:
+#    - name: devbox
+#      user: devbox
+#      password: secret
 #    - name: devbox_testing
 #      user: tester
 #      password: secret
@@ -62,3 +69,5 @@ databases:
 # Global Composer packages to install
 #composer-packages:
 #    - laravel/envoy
+
+#https://www.vultr.com/docs/installing-microweber-on-ubuntu-16-04
